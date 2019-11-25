@@ -1,0 +1,10 @@
+<br>
+<h2>Liste des produits</h2>
+<ul>
+<ng-container *ngFor="let p of lesProduits">
+   <li> Id: {{p.id}} Libellé:   {{p.libelle}}
+   <a [routerLink]="['/produits',p.id]"> Détail</a>  
+</li> 
+</ng-container>
+</ul>
+
