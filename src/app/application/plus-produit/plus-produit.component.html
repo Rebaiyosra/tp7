@@ -1,0 +1,37 @@
+<br/>
+<h3>Ajout d'un produit</h3>
+
+<div class="container">
+    <form [formGroup]="productForm" (ngSubmit)="onSubmitForm()" >
+        <div>
+            <label for="id">
+                Identifiant du produit
+            </label>
+            <input type="number" id="id" name="id"  class="form-control" formControlName="id">
+        </div>
+         <div *ngIf="idProduct.invalid && idProduct.dirty" class="alert alert-danger">
+        L'identifiant est obligatoire
+        </div>
+        <div>
+            <label for="libelle">
+                 Libellé du produit
+            </label>
+            <input type="text" id="libelle" name="lib"  class="form-control" formControlName="libelle">
+            </div>
+            <div *ngIf="libelleProduct.errors?.pattern && libelleProduct.dirty" class="alert alert-danger">
+                Le libellé doit commencer par une majuscule suivie d'au moins 1 caractère 
+            </div>
+           <br/>   
+     
+        <button type="submit" class="btn btn-success" [disabled]="productForm.invalid" >Enregistrer</button>
+        <input type="reset" class="btn btn-danger"  value="Vider"/>
+       
+{{message}}
+    </form>
+
+</div>
+
+  
+
+
+

@@ -1,44 +1,59 @@
 <h2> Contact</h2>
 <div class="col-sm-6 col-sm-offset-2">
-    <form>
+    <form [formGroup]="contactForm" (ngSubmit)="onContacter()" >
         <div class="form-group">
             <label for="nom">
                 Nom & Prénom
             </label>
-            <input type="text" id="nom" class="form-control"/>
+            <input type="text" id="nom" class="form-control" formControlName="nom"/>
         </div>
-
+            <div *ngIf="nomForm.errors?.minlength && nomForm.dirty" class="alert alert-danger">
+        L'identifiant est obligatoire
+        </div>
         <div class="form-group">
             <label for="email">
                 Email:
             </label>
-            <input type="email" id="email" class="form-control" />
+            <input type="email" id="email" class="form-control" formControlName="email"/>
+        </div>
+            <div *ngIf="emailForm.invalid && emailForm.dirty" class="alert alert-danger">
+        L'identifiant est obligatoire
         </div>
         <div class="form-check-inline">
             <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="genre" value="Homme">Homme
-            </label>
+                <input type="radio" class="form-check-input" name="genre" value="Homme" formControlName="genre"/>Homme
+            </label> 
+        </div>
+            <div *ngIf="genreForm.invalid && genreForm.dirty" class="alert alert-danger">
+        L'identifiant est obligatoire
         </div>
         <div class="form-check-inline">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="genre" value="Femme">Femme
+                <input type="radio" class="form-check-input" name="genre" value="Femme" formControlName="genre"/>Femme
             </label>
         </div>
         <div class="form-group">
             <label for="sel">
                 Région:
             </label>
-            <select id="sel" class="form-control">
+            <select id="sel" class="form-control" formControlName="region">
                 <option>Grand Tunis</option>
                 <option>Autre</option>
             </select>
         </div>
         <div class="form-check">
             <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" value="News">Inscription au NewsLetter
+            <input type="checkbox" class="form-check-input" value="News" formControlName="newsLetter">Inscription au NewsLetter
             </label>
         </div>
-        <button class="btn btn-success">Envoyer</button>
+        <h5>Produits préférés</h5>
+        <div formArrayName="preferences">
+        <div *ngFor="let p of lesPreferences.controls; let i=index">
+        <input type="text" [formControlName]="i"/>
+        </div>
+        </div>
+        <button type="button" class="btn btn-warning" (click)="onAjouterPreference()">Ajouter Préférence</button>
+        <button class="btn btn-success" >Envoyer</button>
     </form>
 </div>
 <br/>

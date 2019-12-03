@@ -11,7 +11,9 @@ import { MenuComponent } from './application/menu/menu.component';
 import { ProduitComponent } from './application/produit/produit.component';
 import { ProduitsComponent } from './application/produits/produits.component';
 import { AddProduitComponent } from './application/add-produit/add-produit.component';
-
+import { PlusProduitComponent } from './application/plus-produit/plus-produit.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ModifierProduitComponent } from './modifier-produit/modifier-produit.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,15 @@ import { AddProduitComponent } from './application/add-produit/add-produit.compo
     MenuComponent,
     ProduitComponent,
     ProduitsComponent,
-    AddProduitComponent
+    AddProduitComponent,
+    PlusProduitComponent,
+    ModifierProduitComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

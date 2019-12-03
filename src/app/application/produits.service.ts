@@ -5,12 +5,12 @@ import { Produit } from './Produit';
   providedIn: 'root'
 })
 export class ProduitsService {
-  products =[
+  products = new Array(
     new Produit(15, 'montre'),
     new Produit(32, 'cartable'),
     new Produit(45, 'cahier'),
     new Produit(96, 'tablier')
-  ]
+  )
 
   public getProduitByID(id:number):Produit
   {
@@ -29,6 +29,10 @@ export class ProduitsService {
         return true;
       }    
       return false;
+  }
+  public modifierProduit(libelle:string, id:string){
+    this.products.libelle=libelle;
+    this.products.id=id;
   }
   constructor() { }
 
